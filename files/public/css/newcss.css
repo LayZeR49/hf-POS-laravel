@@ -1,0 +1,62 @@
+
+
+#additemForm { 
+  display: none;
+  z-index: 1000;
+  padding: 2em;
+  width: 400px;
+  text-align: center;
+  background: #fff;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  overflow: auto; 
+  border: 1px solid black;
+  transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  
+}
+
+
+
+.button { 
+  width: 140px;
+  display: inline-block;
+  padding: 2px;
+  background: teal;
+  color: #fff;
+  font-weight: 100;
+  font-size: 1.2em;
+  border: none;
+  height: 30px;
+}
+
+.itemInput, select {
+  border: 1px solid #222222;
+  margin: .8em auto;
+  font-family: inherit; 
+  text-transform: inherit; 
+  font-size: inherit;
+  
+  display: block; 
+  width: 280px; 
+  padding: .4em;
+}
+
+.itemEdit {
+  display: none;
+
+}
+
+.order:hover {
+	background-color: rgba(0, 0, 0, 0.075);
+	
+}
+
+select:required:invalid {
+  color: gray;
+}
+
+option {
+  color: black;
+}

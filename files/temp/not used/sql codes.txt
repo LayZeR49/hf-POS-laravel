@@ -1,0 +1,32 @@
+CREATE TABLE account (
+	id int(11) not null PRIMARY KEY AUTO_INCREMENT,
+    username varchar(63) not null,
+    email varchar(63) not null,
+    pass varchar(63) not null
+);
+
+INSERT INTO account (user, email, pass) VALUES ('layzer49', 'matthewmacansantos@yahoo.com', 'm7908313');
+INSERT INTO items (id, name, price, quantity) VALUES ('', '', '', '');
+
+SELECT [column(*all)] from [table]
+SELECT * from account where id='1' AND username='layzer49'
+
+UPDATE account
+SET pass='m790831349', username='layzer49'
+WHERE id='1'
+
+CREATE TABLE order (
+    oid int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    odate DATE NOT NULL,
+    otime TIME NOT NULL,
+    ototal int(11) NOT NULL,
+    pid int(11) NOT NULL,
+    bid int(11) NOT NULL,
+    FOREIGN KEY(pid) REFERENCES product(pid),
+    FOREIGN KEY(bid) REFERENCES branch(bid)
+)
+
+DELETE FROM account
+WHERE id='1'
+
+SELECT * FROM account ORDER BY id DESC
