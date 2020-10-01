@@ -13,20 +13,23 @@ class CreateOrderController extends Controller
 {
     private $total = 0;
 
+    public function __construct(){
+
+        $this->middleware('auth');
+
+        $cart = CurrentOrder::all();
+        foreach ($cart as $cartItem) {
+            $this->total = $this->total + ($cartItem->iqty * $cartItem->item->iprice);
+        }   
+    }
+
     public function index(){
 
         $items = Item::all();
   
         return view('order.order', [
             'items' => $items
-            ]);
-    }
-
-    public function __construct(){
-        $cart = CurrentOrder::all();
-        foreach ($cart as $cartItem) {
-            $this->total = $this->total + ($cartItem->iqty * $cartItem->item->iprice);
-        }   
+        ]);
     }
 
     public function display(){
@@ -36,7 +39,7 @@ class CreateOrderController extends Controller
             'cart' => $cart,
             'total' => $this->total,
             'isList' => false
-            ]);
+        ]);
     }
 
     public function list(){
@@ -46,7 +49,7 @@ class CreateOrderController extends Controller
             'cart' => $cart,
             'total' => $this->total,
             'isList' => true
-            ]);
+        ]);
     }
 
     public function add(){

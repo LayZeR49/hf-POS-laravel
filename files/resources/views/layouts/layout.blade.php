@@ -1,14 +1,3 @@
-<?php
-    ///include_once 'php/dbh.inc.php';
-?>
-
-<?php
-session_start();
-if (empty($_SESSION['user'])) {
-    header('Location: login.html');
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 

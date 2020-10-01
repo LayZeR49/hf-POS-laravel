@@ -20,6 +20,7 @@ class CreateItemTable extends Migration
             $table->integer('iprice');
             $table->integer('iquantity');
             $table->foreignId('cid');
+            $table->foreign('cid')->references('cid')->on('category');
         });
     }
 

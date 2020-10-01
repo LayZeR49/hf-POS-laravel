@@ -14,8 +14,13 @@ class CreateOrderdetailTable extends Migration
     public function up()
     {
         Schema::create('orderdetail', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('lid');
             $table->timestamps();
+            $table->foreignId('oid');
+            $table->foreignId('iid');
+            $table->foreign('oid')->references('oid')->on('order');
+            $table->foreign('iid')->references('iid')->on('item');
+            $table->integer('iqty');
         });
     }
 

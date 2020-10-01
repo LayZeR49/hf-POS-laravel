@@ -8,13 +8,18 @@ use App\Models\Category;
 
 class ItemsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(){
 
         $categories = Category::all();
 
         return view('items.items', [
             'categories' => $categories
-            ]);
+        ]);
     }
 
     public function display(){
@@ -30,7 +35,7 @@ class ItemsController extends Controller
         return view('items.itemsEdit', [
             'item' => $item,
             'categories' => $categories
-            ]);
+        ]);
     }
 
     public function add(){

@@ -7,13 +7,18 @@ use App\Models\Order;
 
 class TransactionsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(){
 
         $orders = Order::all();
 
         return view('transactions.transactions', [
             'orders' => $orders
-            ]);
+        ]);
     }
 
     public function display(){
@@ -21,7 +26,7 @@ class TransactionsController extends Controller
 
         return view('transactions.transactionsDisplay', [
             'orders' => $orders
-            ]);
+        ]);
     }
 
     public function show($id){
@@ -30,6 +35,6 @@ class TransactionsController extends Controller
 
         return view('transactions.transactionsDetails', [
             'order' => $order
-            ]);
+        ]);
     }
 }

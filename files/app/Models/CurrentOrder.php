@@ -10,7 +10,6 @@ class CurrentOrder extends Model
     use HasFactory;
     protected $table = 'currentorder';
     protected $primaryKey = 'coid';
-    public $timestamps = false;
 
     public function item()
     {
