@@ -506,8 +506,9 @@
 				
 				if(submitValue == "add") {
                     data = $("#additemFormID").serializeArray();
+
                     $.ajax({
-                        url: 'items/create',
+                        url: 'items/add',
                         type: 'post',
                         data: data
                     });
@@ -516,16 +517,17 @@
                     data = $("#itemEditForm").serializeArray();
 
                     if(submitValue == "edit") {
+
                         $.ajax({
                             url: 'items/edit',
-                            type: 'post',
+                            type: 'put',
                             data: data
                         });
                     }
                     else if (submitValue == "delete") {
                         $.ajax({
                             url: 'items/delete',
-                            type: 'post',
+                            type: 'delete',
                             data: data
                         });
                     }
@@ -558,10 +560,12 @@
         });
 		
 		$(function() {
-            $("#itemTableContainer").on("click", "div table #itemDisplayBlock .itemEditButton", function() {
+            $("#itemTableContainer").on("click", ".itemEditButton", function() {
+
                 $(".itemEdit").css("display", "block");
                 $(".itemAdd").css("display", "none");
                 IDValue = $(this).data('val');
+
                 $("#itemEditBlock").load('/itemsEdit/' + IDValue);	
             });
         });

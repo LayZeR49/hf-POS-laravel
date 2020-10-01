@@ -4,8 +4,8 @@
     <table id="orderTable" class="table table-borderless table-earning" >
         <thead>
             <tr>
-                <th>date</th>
-                <th>order ID</th>
+                <th style="width: 5%">Order ID</th>
+                <th>Date</th>
                 <th class="text-right">total</th>
             </tr>
         </thead>
@@ -13,8 +13,8 @@
 
 		@foreach($orders as $order)
 			<tr class="order" data-val="{{ $order->oid }}" data-toggle="modal" data-target="#largeModal">
-				<td>{{ $order->odatetime }}</td>
 				<td>{{ $order->oid }}</td>
+				<td>{{ $order->odatetime }}</td>
 				<td class="text-right">${{ $order->ototal }}</td>
 			</tr>
 		@endforeach

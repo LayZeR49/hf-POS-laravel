@@ -45,14 +45,19 @@ class ItemsController extends Controller
     }
 
     public function edit(){
-        $item = Item::where('iid', $id)->firstOrFail();
+        $item = Item::where('iid', request('productID'))->firstOrFail();
 
         $item->iname = request('name');
         $item->iprice = request('price');
         $item->iquantity = request('quantity');
         $item->cid = request('category');
-
-        error_log($item);
+        
         $item->save();
+    }
+
+    public function delete(){
+        $item = Item::where('iid', request('productID'))->firstOrFail();
+        
+        $item->delete();
     }
 }

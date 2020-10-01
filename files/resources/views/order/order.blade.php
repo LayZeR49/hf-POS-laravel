@@ -344,14 +344,7 @@
                                         </li>
                                     </ul>
                                 </div>
-								<!--
-                                <form class="au-form-icon--sm" action="" method="post">
-                                    <input class="au-input--w300 au-input--style2" type="text" placeholder="Search for transactions...">
-                                    <button class="au-btn--submit2" type="submit">
-                                        <i class="zmdi zmdi-search"></i>
-                                    </button>
-                                </form>
-								-->
+
                             </div>
                         </div>
                     </div>
@@ -388,6 +381,7 @@
 						
 						<div class="card-body card-block" >
                                 <form action="" method="POST" id="orderListForm">
+                                @csrf
 									<div class="row">
 									  <div class="col-6 col-md-4">
 											<select style="width: 50%" class="js-example-basic-single" name="product" required>
@@ -510,55 +504,72 @@ $(function() {
 });
 });
 
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
 $(function() {
-   $("#orderListTableContainer").load("newOrderDisplay.php");
-   $("#orderDetailsBlock").load("newOrderDisplay.php", {
-	   noX: 1
-   });
+    $("#orderListTableContainer").load('/orderDisplay');
+    $("#orderDetailsBlock").load('/orderDisplay/list');
 });
 
 $(function() {
 	$("form").on("submit", function(event) {
 		event.preventDefault();
 
-		data = $(this).serializeArray();
+        data = $(this).serializeArray();
+        
+        $.ajax({
+            url: 'order/add',
+            type: 'post',
+            data: data
+        });
 
-		$("#orderListTableContainer").load("newOrderDisplay.php", data);
-		$("#orderDetailsBlock").load("newOrderDisplay.php", {
-			noX: 1
-		});
+		$("#orderListTableContainer").load('/orderDisplay');
+        $("#orderDetailsBlock").load('/orderDisplay/list');
 		
 		$("#inputQuantity").val(' ');
-		
-		
+	
 	});
+});
+
+$(function() {
+    $("#orderListTableContainer").on("click", ".deleteCartItem", function() {
+        IDValue = $(this).data('val');
+        console.log(IDValue);
+        $.ajax({
+            url: 'order/delete/' + IDValue,
+            type: 'delete',
+        });
+
+        $("#orderListTableContainer").load('/orderDisplay');
+        $("#orderDetailsBlock").load('/orderDisplay/list');
+    });
 });
 		
 $(function() {
 	$("#reset").on("click", function(event) {
-		event.preventDefault();
-		
-		value = $(this).val();
-		$("#orderListTableContainer").load("newOrderDisplay.php", {
-			buttonValue: value
-		});
-		$("#orderDetailsBlock").load("newOrderDisplay.php", {
-			noX: 1
-		});
+        event.preventDefault();
+        $.ajax({
+            url: 'order/clear',
+            type: 'delete',
+        });
+        $("#orderListTableContainer").load('/orderDisplay');
+        $("#orderDetailsBlock").load('/orderDisplay/list');
 	});
 });
 
 $(function() {
 	$("#submit").on("click", function(event) {
 		event.preventDefault();
-		
-		value = $(this).val();
-		$("#orderListTableContainer").load("newOrderDisplay.php", {
-			buttonValue: value
-		});
-		$("#orderDetailsBlock").load("newOrderDisplay.php", {
-			noX: 1
-		});
+		$.ajax({
+            url: 'order/order',
+            type: 'post',
+        });
+		$("#orderListTableContainer").load('/orderDisplay');
+		$("#orderDetailsBlock").load('/orderDisplay/list');
 	});
 });
 

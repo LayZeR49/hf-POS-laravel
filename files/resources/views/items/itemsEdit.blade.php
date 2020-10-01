@@ -1,6 +1,7 @@
 
 
 <form action="itemEdit.php" method="POST" id="itemEditForm">
+@csrf
     <div class="form-group">
         <input class="itemInput" name="productID" value="{{ $item->iid }}" style="display: none;">
         <input class="itemInput" name="name" value="{{ $item->iname }}" placeholder="Name" type="text" required />
@@ -18,7 +19,7 @@
 
 	<script>
 	$(function() {
-		$("#editCategory").val({{ $category->cid }});
+		$("#editCategory").val({{ $item->cid }});
 		
 	});
 	</script>
