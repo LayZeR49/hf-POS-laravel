@@ -27,7 +27,6 @@
 			<td class="text-right">{{ $item->iprice }}</td>
 			<td class="text-right">{{ $item->pivot->iqty }}</td>
 			<td class="text-right">{{ $item->iprice * $item->pivot->iqty }}</td>
-					
 		</tr>
 	@endforeach
  

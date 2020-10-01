@@ -4,7 +4,7 @@
     <table id="orderTable" class="table table-borderless table-earning" >
         <thead>
             <tr>
-                <th style="width: 5%">Order ID</th>
+                <th style="width: 20%">Order ID</th>
                 <th>Date</th>
                 <th class="text-right">total</th>
             </tr>
