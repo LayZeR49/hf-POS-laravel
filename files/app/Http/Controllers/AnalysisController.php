@@ -6,7 +6,14 @@ use Illuminate\Http\Request;
 
 class AnalysisController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(){
-        return view('analysis');
+        return view('analysis', [
+            'current' => 'analysis',
+        ]);
     }
 }

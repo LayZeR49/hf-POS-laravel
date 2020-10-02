@@ -28,7 +28,8 @@ class CreateOrderController extends Controller
         $items = Item::all();
   
         return view('order.order', [
-            'items' => $items
+            'items' => $items,
+            'current' => 'order'
         ]);
     }
 
@@ -57,6 +58,7 @@ class CreateOrderController extends Controller
 
         $cartItem->iid = request('product');
         $cartItem->iqty = request('quantity');
+        $cartItem->created_at = now();
 
         $cartItem->save();
     }
@@ -80,6 +82,7 @@ class CreateOrderController extends Controller
 
         $order = new Order();
         $order->ototal = $this->total;
+        $order->created_at = now();
         $order->save();
 
         foreach($cart as $cartItem) {
@@ -88,6 +91,7 @@ class CreateOrderController extends Controller
             $orderdetail->oid = $nextId;
             $orderdetail->iid = $cartItem->iid;
             $orderdetail->iqty = $cartItem->iqty;
+            $orderdetail->created_at = now();
 
             $orderdetail->save();
         }

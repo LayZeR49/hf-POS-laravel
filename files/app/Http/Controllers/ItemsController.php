@@ -18,7 +18,8 @@ class ItemsController extends Controller
         $categories = Category::all();
 
         return view('items.items', [
-            'categories' => $categories
+            'categories' => $categories,
+            'current' => 'items'
         ]);
     }
 
@@ -45,6 +46,7 @@ class ItemsController extends Controller
         $item->iprice = request('price');
         $item->iquantity = request('quantity');
         $item->cid = request('category');
+        $item->created_at = now();
 
         $item->save();
     }
@@ -56,6 +58,7 @@ class ItemsController extends Controller
         $item->iprice = request('price');
         $item->iquantity = request('quantity');
         $item->cid = request('category');
+        $item->updated_at = now();
         
         $item->save();
     }

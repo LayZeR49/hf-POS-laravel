@@ -1,7 +1,7 @@
 
 <div class="row">
 	<div class="col-lg-6">
-		{{ $order->odatetime }}
+		{{ $order->created_at }}
 	</div>
 	<div class="col-lg-6 ">
 		Total: P{{ $order->ototal}}

@@ -17,13 +17,14 @@ class TransactionsController extends Controller
         $orders = Order::all();
 
         return view('transactions.transactions', [
-            'orders' => $orders
+            'orders' => $orders,
+            'current' => 'transactions'
         ]);
     }
 
     public function display(){
         $orders = Order::all();
-
+        
         return view('transactions.transactionsDisplay', [
             'orders' => $orders
         ]);
