@@ -29,7 +29,8 @@ class CreateOrderController extends Controller
   
         return view('order.order', [
             'items' => $items,
-            'current' => 'order'
+            'current' => 'order',
+            'title' => 'Order Creation'
         ]);
     }
 

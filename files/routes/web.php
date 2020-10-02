@@ -15,10 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [App\Http\Controllers\IndexController::class, 'index'])->name('index');
 
-Route::get('/login2', function () {
-    return view('login');
-});
-
 Route::get('/analysis', [App\Http\Controllers\AnalysisController::class, 'index'])->name('analysis');
 
 

@@ -10,7 +10,6 @@ class Order extends Model
     use HasFactory;
     protected $table = 'order';
     protected $primaryKey = 'oid';
-    public $timestamps = false;
     
     public function items()
     {

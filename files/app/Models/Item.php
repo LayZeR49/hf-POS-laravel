@@ -10,7 +10,6 @@ class Item extends Model
     use HasFactory;
     protected $table = 'item';
     protected $primaryKey = 'iid';
-    public $timestamps = false;
 
     public function category()
     {

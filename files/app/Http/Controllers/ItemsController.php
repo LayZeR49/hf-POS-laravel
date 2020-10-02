@@ -19,7 +19,8 @@ class ItemsController extends Controller
 
         return view('items.items', [
             'categories' => $categories,
-            'current' => 'items'
+            'current' => 'items',
+            'title' => 'Item List'
         ]);
     }
 

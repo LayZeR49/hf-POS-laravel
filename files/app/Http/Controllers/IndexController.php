@@ -14,6 +14,7 @@ class IndexController extends Controller
     public function index(){
         return view('index', [
             'current' => 'index',
+            'title' => 'Dashboard'
         ]);
     }
 }

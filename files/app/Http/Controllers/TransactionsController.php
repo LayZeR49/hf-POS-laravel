@@ -18,7 +18,8 @@ class TransactionsController extends Controller
 
         return view('transactions.transactions', [
             'orders' => $orders,
-            'current' => 'transactions'
+            'current' => 'transactions',
+            'title' => 'Transaction Log'
         ]);
     }
 

@@ -6,13 +6,10 @@
     <!-- Required meta tags-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="au theme template">
-    <meta name="author" content="Hau Nguyen">
-    <meta name="keywords" content="au theme template">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Title Page-->
-    <title>Transactions</title>
+    <title>{{ $title }}</title>
 
     <!-- Fontfaces CSS-->
     <link href="/css/font-face.css" rel="stylesheet" media="all">
@@ -55,7 +52,7 @@
                         @else
                             <a href="{{ Route('index') }}">
                         @endif
-                            <img src="images/icon/hf01.png" alt="CoolAdmin" width="250px" height="150px">
+                            <img src="/images/icon/hf01.png" alt="HF" width="250px" height="150px">
                         </a>
                     </div>
                     <div class="header__navbar">
@@ -186,7 +183,7 @@
                         <div class="account-wrap">
                             <div class="account-item account-item--style2 clearfix js-item-menu">
                                 <div class="image">
-                                    <img src="images/icon/avatar-01.jpg" alt="{{ Auth::user()->name }}" />
+                                    <img src="/images/icon/avatar-01.jpg" alt="{{ Auth::user()->name }}" />
                                 </div>
                                 <div class="content">
                                     <a class="js-acc-btn" href="#">{{ Auth::user()->name }}</a>
@@ -195,7 +192,7 @@
                                     <div class="info clearfix">
                                         <div class="image">
                                             <a href="#">
-                                                <img src="images/icon/avatar-01.jpg" alt="{{ Auth::user()->name }}" />
+                                                <img src="/images/icon/avatar-01.jpg" alt="{{ Auth::user()->name }}" />
                                             </a>
                                         </div>
                                         <div class="content">
@@ -248,7 +245,7 @@
                         @else
                             <a class="logo" href="{{ Route('index') }}">
                         @endif
-                            <img src="images/icon/logo-white.png" alt="CoolAdmin" />
+                            <img src="/images/icon/hflogo01.png" alt="HF" />
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">
@@ -385,7 +382,7 @@
                 <div class="account-wrap">
                     <div class="account-item account-item--style2 clearfix js-item-menu">
                         <div class="image">
-                            <img src="images/icon/avatar-01.jpg" alt="{{ Auth::user()->name }}" />
+                            <img src="/images/icon/avatar-01.jpg" alt="{{ Auth::user()->name }}" />
                         </div>
                         <div class="content">
                             <a class="js-acc-btn" href="#">{{ Auth::user()->name }}</a>
@@ -394,7 +391,7 @@
                             <div class="info clearfix">
                                 <div class="image">
                                     <a href="#">
-                                        <img src="images/icon/avatar-01.jpg" alt="{{ Auth::user()->name }}" />
+                                        <img src="/images/icon/avatar-01.jpg" alt="{{ Auth::user()->name }}" />
                                     </a>
                                 </div>
                                 <div class="content">
@@ -432,26 +429,26 @@
     <!-- END HEADER MOBILE -->
     @yield('content')
 
-    <script src="vendor/jquery.min.js"></script>
+    <script src="/vendor/jquery.min.js"></script>
 
-    <script src="vendor/bootstrap-4.1/popper.min.js"></script>
-    <script src="vendor/bootstrap-4.1/bootstrap.min.js"></script> 
+    <script src="/vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="/vendor/bootstrap-4.1/bootstrap.min.js"></script> 
 
-    <script src="vendor/slick/slick.min.js">
+    <script src="/vendor/slick/slick.min.js">
     </script>
-    <script src="vendor/wow/wow.min.js"></script>
-    <script src="vendor/animsition/animsition.min.js"></script>
-    <script src="vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+    <script src="/vendor/wow/wow.min.js"></script>
+    <script src="/vendor/animsition/animsition.min.js"></script>
+    <script src="/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
     </script>
-    <script src="vendor/counter-up/jquery.waypoints.min.js"></script>
-    <script src="vendor/counter-up/jquery.counterup.min.js">
+    <script src="/vendor/counter-up/jquery.waypoints.min.js"></script>
+    <script src="/vendor/counter-up/jquery.counterup.min.js">
     </script>
-    <script src="vendor/circle-progress/circle-progress.min.js"></script>
-    <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
-    <script src="vendor/chartjs/Chart.bundle.min.js"></script>
-    <script src="vendor/select2/select2.min.js"></script>
+    <script src="/vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="/vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="/vendor/select2/select2.min.js"></script>
 
-    <script src="js/main.js"></script>
+    <script src="/js/main.js"></script>
 
     @yield('scripts')
 </body>

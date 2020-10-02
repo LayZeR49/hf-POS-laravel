@@ -14,6 +14,7 @@ class AnalysisController extends Controller
     public function index(){
         return view('analysis', [
             'current' => 'analysis',
+            'title' => 'Data Analysis'
         ]);
     }
 }
