@@ -3,7 +3,7 @@
 @section('content')
         <!-- PAGE CONTENT-->
         <div class="page-content--bgf7">
-            <!-- BREADCRUMB-->
+            <!-- TOP ROW -->
             <section class="au-breadcrumb2">
                 <div class="container">
                     <div class="row">
@@ -26,9 +26,9 @@
                     </div>
                 </div>
             </section>
-            <!-- END BREADCRUMB-->
+            <!-- END TOP ROW -->
 
-            <!-- WELCOME-->
+            <!-- DATE -->
             <section class="welcome p-t-10">
                 <div class="container">
                     <div class="row">
@@ -41,7 +41,7 @@
                     </div>
                 </div>
             </section>
-            <!-- END WELCOME-->
+            <!-- END DATE -->
 
             <!-- STATISTIC-->
             <section class="statistic statistic2">
@@ -230,26 +230,15 @@
             </section>
             <!-- END DATA TABLE-->
 
-            <!-- COPYRIGHT-->
-            <section class="p-t-60 p-b-20">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="copyright">
-                                <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- END COPYRIGHT-->
         </div>
+        <!-- END PAGE CONTENT-->
 
     </div>
 @endsection
 
 @section('scripts')	
-	<script>
+<script>
+//GET DATE
 	var months    = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 	var now       = new Date();
 	var thisMonth = months[now.getMonth()];
@@ -260,5 +249,5 @@
 	
 	document.getElementById("date").innerHTML = currentDate;
 	
-	</script>
+</script>
 @endsection

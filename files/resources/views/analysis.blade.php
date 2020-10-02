@@ -1,9 +1,9 @@
 @extends('layouts.layout')
 
 @section('content')
-        <!-- PAGE CONTENT-->
+        <!-- PAGE CONTENT -->
         <div class="page-content--bgf7">
-            <!-- BREADCRUMB-->
+            <!-- TOP ROW -->
             <section class="au-breadcrumb2">
                 <div class="container">
                     <div class="row">
@@ -29,10 +29,10 @@
                     </div>
                 </div>
             </section>
-            <!-- END BREADCRUMB-->
+            <!-- END TOP ROW->
 
-            <!--BLANK-->
-			    <div class="page-content--bgf7">
+            <!-- MAIN CONTENT-->
+			<div class="page-content--bgf7">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <h3 class="title-5 m-b-35">Graphs / Charts</h3> 
@@ -61,20 +61,10 @@
                     </div>
                 </div>
             </div>
-            <!-- COPYRIGHT-->
-            <section class="p-t-60 p-b-20">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="copyright">
-                                <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- END COPYRIGHT-->
+            <!-- END MAIN CONTENT-->
+
         </div>
+        <!-- END PAGE CONTENT -->
 
     </div>
 

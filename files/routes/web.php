@@ -37,7 +37,9 @@ Route::post('/items/add', [App\Http\Controllers\ItemsController::class, 'add'])-
 Route::put('/items/edit', [App\Http\Controllers\ItemsController::class, 'edit'])->name('items.edit');
 Route::delete('/items/delete', [App\Http\Controllers\ItemsController::class, 'delete'])->name('items.delete');
 
-Auth::routes();
-//[ 'register' => false ]
+Auth::routes(/*[
+    'register' => false 
+]*/);
+//REGISTRATION
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

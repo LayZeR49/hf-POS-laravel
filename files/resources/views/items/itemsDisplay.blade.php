@@ -41,7 +41,6 @@
 		
 	}
 	
-
 	//$('#itemTable').DataTable.destroy();
 } );
 </script>
