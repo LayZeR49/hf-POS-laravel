@@ -22,6 +22,10 @@ class CreateOrderdetailTable extends Migration
             $table->foreign('iid')->references('iid')->on('item');
             $table->integer('iqty');
         });
+
+        Artisan::call('db:seed', [
+            '--class' => OrderDetailSeeder::class
+        ]);
     }
 
     /**

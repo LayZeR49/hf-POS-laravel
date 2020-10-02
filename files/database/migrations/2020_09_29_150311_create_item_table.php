@@ -22,6 +22,10 @@ class CreateItemTable extends Migration
             $table->foreignId('cid');
             $table->foreign('cid')->references('cid')->on('category');
         });
+
+        Artisan::call('db:seed', [
+            '--class' => ItemSeeder::class
+        ]);
     }
 
     /**

@@ -18,6 +18,10 @@ class CreateOrderTable extends Migration
             $table->timestamps();
             $table->integer('ototal');
         });
+
+        Artisan::call('db:seed', [
+            '--class' => OrderSeeder::class
+        ]);
     }
 
     /**
