@@ -38,5 +38,6 @@ Route::put('/items/edit', [App\Http\Controllers\ItemsController::class, 'edit'])
 Route::delete('/items/delete', [App\Http\Controllers\ItemsController::class, 'delete'])->name('items.delete');
 
 Auth::routes();
+//[ 'register' => false ]
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
