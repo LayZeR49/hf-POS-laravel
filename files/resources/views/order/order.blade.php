@@ -57,10 +57,10 @@
                                 @csrf
 									<div class="row">
 									  <div class="col-6 col-md-4">
-											<select style="width: 50%" class="js-example-basic-single" name="product" required>
+											<select id="itemSelect" style="width: 50%" class="js-example-basic-single" name="product" required>
 												<option style="display: none;"></option>
 												@foreach($items as $item)
-                                                    <option value="{{ $item->iid }}" data-price="{{ $item->iprice }}" data-max="{{ $item->iquantity }}">{{ $item->iname }}</option>
+                                                    <option class="itemChoice" value="{{ $item->iid }}" data-price="{{ $item->iprice }}" data-max="@isset($item->cart->iqty){{ $item->iquantity - $item->cart->iqty }}@else{{ $item->iquantity }}@endisset">{{ $item->iname }}</option>
                                                 @endforeach
                                             </select>
 										</div>
@@ -173,7 +173,7 @@ $(function() {
     $('.js-example-basic-single').select2({
     placeholder: "Select a product",
     allowClear: true,
-	 width: 'resolve'
+	width: 'resolve',
 });
 });
 
@@ -197,12 +197,20 @@ $(function() {
         $.ajax({
             url: '{{ Route('order.add') }}',
             type: 'post',
-            data: data
+            data: data,
+            success: function(){  
+                var option = $('.itemChoice[value=' + data[1]["value"] + ']');
+                var max = option.data('max');
+                max = max - data[2]["value"];
+                option.data('max', max);
+            }
         });
+
 
 		$("#orderListTableContainer").load('{{ Route('orderDisplay') }}');
         $("#orderDetailsBlock").load('{{ Route('orderDisplay.list') }}');
-		
+        
+        $('#itemSelect').val('').trigger('change')
 		$("#inputQuantity").val(' ');
 	
 	});

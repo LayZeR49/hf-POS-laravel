@@ -16,7 +16,7 @@ class CreateCurrentorderTable extends Migration
         Schema::create('currentorder', function (Blueprint $table) {
             $table->bigIncrements('coid');
             $table->timestamps();
-            $table->foreignId('iid');
+            $table->foreignId('iid')->unique();
             $table->foreign('iid')->references('iid')->on('item');
             $table->integer('iqty');
         });

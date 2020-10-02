@@ -8,6 +8,7 @@ use App\Models\Order;
 use App\Models\OrderDetail;
 use App\Models\CurrentOrder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class CreateOrderController extends Controller
 {
@@ -26,6 +27,7 @@ class CreateOrderController extends Controller
     public function index(){
 
         $items = Item::all();
+        $cart = CurrentOrder::all();
   
         return view('order.order', [
             'items' => $items,
@@ -55,13 +57,33 @@ class CreateOrderController extends Controller
     }
 
     public function add(){
-        $cartItem = new CurrentOrder();
+        $iid = request('product');
 
-        $cartItem->iid = request('product');
-        $cartItem->iqty = request('quantity');
-        $cartItem->created_at = now();
+        $input = array('iid' => $iid);
+        $rules = array(
+            'iid' => 'unique:currentorder,iid'
+        );
+
+        $validator = Validator::make($input,$rules);
+
+        if($validator->passes())
+        {
+            $cartItem = new CurrentOrder();
+
+            $cartItem->iid = $iid;
+            $cartItem->iqty = request('quantity');
+            $cartItem->created_at = now();
+        } 
+        else 
+        {
+            $cartItem = CurrentOrder::where('iid', $iid)->firstOrFail();
+            $cartItem->iqty = $cartItem->iqty + request('quantity');
+            $cartItem->updated_at = now();
+        }
 
         $cartItem->save();
+
+        return $cartItem;
     }
 
     public function delete($id){
@@ -95,6 +117,13 @@ class CreateOrderController extends Controller
             $orderdetail->created_at = now();
 
             $orderdetail->save();
+
+            //$item = Item::where('iid', $cartItem->iid)->firstOrFail();
+            //$item->iquantity = $item->iquantity - $cartItem->iqty;
+            
+            $cartItem->item->iquantity = $cartItem->item->iquantity - $cartItem->iqty;
+
+            $cartItem->item->save();
         }
 
         

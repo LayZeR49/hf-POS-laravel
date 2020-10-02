@@ -16,4 +16,8 @@ class Item extends Model
         return $this->hasOne('App\Models\Category', 'cid', 'cid');
     }
     
+    public function cart()
+    {
+        return $this->belongsTo('App\Models\CurrentOrder', 'iid', 'iid');
+    }
 }
