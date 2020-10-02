@@ -7,7 +7,7 @@
             <div class="section__content section__content--p35">
                 <div class="header3-wrap">
                     <div class="header__logo">
-                        <a href="index.php">
+                        <a href="/">
                             <img src="images/icon/hf01.png" alt="CoolAdmin" width="250px" height="150px">
                         </a>
                     </div>

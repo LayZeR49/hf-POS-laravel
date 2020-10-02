@@ -7,19 +7,19 @@
             <div class="section__content section__content--p35">
                 <div class="header3-wrap">
                     <div class="header__logo">
-                        <a href="index.php">
+                        <a href="{{ route('index') }}">
                             <img src="images/icon/hf01.png" alt="CoolAdmin" width="250px" height="150px">
                         </a>
                     </div>
                     <div class="header__navbar">
                         <ul class="list-unstyled">
                             <li>
-                                <a href="/">
+                                <a href="{{ route('index') }}">
                                     <i class="fas fa-tachometer-alt"></i>Daily Overview
                                     <span class="bot-line"></span></a>
                             </li>
 							<li>
-                                <a href="/analysis">
+                                <a href="{{ route('analysis') }}">
                                     <i class="fas fa-chart-bar"></i>
                                     <span class="bot-line"></span>Sales Statistics</a>
                             </li>
@@ -29,12 +29,12 @@
                                     <span class="bot-line"></span>Manage Products</a>
                             </li>
 							<li>
-                                <a href="/transactions">
+                                <a href="{{ route('transactions') }}">
                                     <i class="fas fa-copy"></i>
                                     <span class="bot-line"></span>View Orders</a>
                             </li>
 							<li>
-                                <a href="/order">
+                                <a href="{{ route('order') }}">
                                     <i class="fas fa-plus"></i>
                                     <span class="bot-line"></span>Create Order</a>
                             </li>
@@ -170,8 +170,8 @@
             <div class="header-mobile__bar">
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
-                        <a class="logo" href="index.php">
-                            <img src="images/icon/logo-white.png" alt="CoolAdmin" />
+                        <a class="logo" href="{{ route('index') }}">
+                            <img src="images/icon/hflogo.png" alt="CoolAdmin" />
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">
@@ -185,7 +185,7 @@
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
                         <li>
-                            <a href="index.php">
+                            <a href="{{ route('index') }}">
                                 <i class="fas fa-tachometer-alt"></i>Overview</a>
                         </li>
                         <li>
@@ -193,11 +193,11 @@
                                 <i class="fas fa-shopping-basket"></i>Items</a>
                         </li>
                         <li>
-                            <a href="analysis.html">
+                            <a href="{{ route('analysis') }}">
                                 <i class="fas fa-chart-bar"></i>Analysis</a>
                         </li>
                         <li>
-                            <a href="transactions.html">
+                            <a href="{{ route('transactions') }}">
                                 <i class="fas fa-copy"></i>Transactions</a>
                         </li>
                     </ul>

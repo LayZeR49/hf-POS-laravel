@@ -13,39 +13,33 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', [App\Http\Controllers\IndexController::class, 'index'])->name('index');
 
 Route::get('/login2', function () {
     return view('login');
 });
 
-Route::get('/analysis', function () {
-    return view('analysis');
-});
+Route::get('/analysis', [App\Http\Controllers\AnalysisController::class, 'index'])->name('analysis');
 
 
-Route::get('/order', 'App\Http\Controllers\CreateOrderController@index')->name('order');
-Route::get('/orderDisplay', 'App\Http\Controllers\CreateOrderController@display')->name('orderDisplay');
-Route::get('/orderDisplay/list', 'App\Http\Controllers\CreateOrderController@list')->name('orderDisplay.list');
-Route::post('/order/add', 'App\Http\Controllers\CreateOrderController@add')->name('order.add');
-Route::delete('/order/delete/{id}', 'App\Http\Controllers\CreateOrderController@delete')->name('order.delete');
-Route::delete('/order/clear', 'App\Http\Controllers\CreateOrderController@clear')->name('order.clear');
-Route::post('/order/order', 'App\Http\Controllers\CreateOrderController@order')->name('order.order');
+Route::get('/order', [App\Http\Controllers\CreateOrderController::class, 'index'])->name('order');
+Route::get('/orderDisplay', [App\Http\Controllers\CreateOrderController::class, 'display'])->name('orderDisplay');
+Route::get('/orderDisplay/list', [App\Http\Controllers\CreateOrderController::class, 'list'])->name('orderDisplay.list');
+Route::post('/order/add', [App\Http\Controllers\CreateOrderController::class, 'add'])->name('order.add');
+Route::delete('/order/delete/{id}', [App\Http\Controllers\CreateOrderController::class, 'delete'])->name('order.delete');
+Route::delete('/order/clear', [App\Http\Controllers\CreateOrderController::class, 'clear'])->name('order.clear');
+Route::post('/order/order', [App\Http\Controllers\CreateOrderController::class, 'order'])->name('order.order');
 
-Route::get('/transactions', 'App\Http\Controllers\TransactionsController@index');
-Route::get('/transactionsDisplay', 'App\Http\Controllers\TransactionsController@display');
-Route::get('/transactionsDetails/{id}', 'App\Http\Controllers\TransactionsController@show');
+Route::get('/transactions', [App\Http\Controllers\TransactionsController::class, 'index'])->name('transactions');
+Route::get('/transactionsDisplay', [App\Http\Controllers\TransactionsController::class, 'display'])->name('transactionsDisplay');
+Route::get('/transactionsDetails/{id}', [App\Http\Controllers\TransactionsController::class, 'show'])->name('transactions.show');
 
 Route::get('/items', [App\Http\Controllers\ItemsController::class, 'index'])->name('items');
-Route::get('/itemsDisplay', 'App\Http\Controllers\ItemsController@display')->name('itemsDisplay');
-Route::get('/itemsEdit/{id}', 'App\Http\Controllers\ItemsController@show')->name('itemsEdit');
-Route::post('/items/add', 'App\Http\Controllers\ItemsController@add')->name('items.add');
-Route::put('/items/edit', 'App\Http\Controllers\ItemsController@edit')->name('items.edit');
-Route::delete('/items/delete', 'App\Http\Controllers\ItemsController@delete')->name('items.delete');
-
-
+Route::get('/itemsDisplay', [App\Http\Controllers\ItemsController::class, 'display'])->name('itemsDisplay');
+Route::get('/itemsEdit/{id}', [App\Http\Controllers\ItemsController::class, 'show'])->name('itemsEdit');
+Route::post('/items/add', [App\Http\Controllers\ItemsController::class, 'add'])->name('items.add');
+Route::put('/items/edit', [App\Http\Controllers\ItemsController::class, 'edit'])->name('items.edit');
+Route::delete('/items/delete', [App\Http\Controllers\ItemsController::class, 'delete'])->name('items.delete');
 
 Auth::routes();
 

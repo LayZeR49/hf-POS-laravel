@@ -18,6 +18,10 @@ class CreateCategoryTable extends Migration
             $table->timestamps();
             $table->string('cname');
         });
+
+        Artisan::call('db:seed', [
+            '--class' => CategorySeeder::class
+        ]);
     }
 
     /**
