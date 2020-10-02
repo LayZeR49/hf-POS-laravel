@@ -98,37 +98,40 @@ class CreateOrderController extends Controller
 
     public function order(){
         $cart = CurrentOrder::all();
-        
 
-        $statement = DB::select("SHOW TABLE STATUS LIKE 'order'");
-        $nextId = $statement[0]->Auto_increment;
+        if(!$cart->isEmpty()) {
+            $statement = DB::select("SHOW TABLE STATUS LIKE 'order'");
+            $nextId = $statement[0]->Auto_increment;
 
-        $order = new Order();
-        $order->ototal = $this->total;
-        $order->created_at = now();
-        $order->save();
+            $order = new Order();
+            $order->ototal = $this->total;
+            $order->created_at = now();
+            $order->save();
 
-        foreach($cart as $cartItem) {
-            $orderdetail = new OrderDetail();
+            foreach($cart as $cartItem) {
+                $orderdetail = new OrderDetail();
 
-            $orderdetail->oid = $nextId;
-            $orderdetail->iid = $cartItem->iid;
-            $orderdetail->iqty = $cartItem->iqty;
-            $orderdetail->created_at = now();
+                $orderdetail->oid = $nextId;
+                $orderdetail->iid = $cartItem->iid;
+                $orderdetail->iqty = $cartItem->iqty;
+                $orderdetail->created_at = now();
 
-            $orderdetail->save();
+                $orderdetail->save();
 
-            //$item = Item::where('iid', $cartItem->iid)->firstOrFail();
-            //$item->iquantity = $item->iquantity - $cartItem->iqty;
-            
-            $cartItem->item->iquantity = $cartItem->item->iquantity - $cartItem->iqty;
+                //$item = Item::where('iid', $cartItem->iid)->firstOrFail();
+                //$item->iquantity = $item->iquantity - $cartItem->iqty;
+                
+                $cartItem->item->iquantity = $cartItem->item->iquantity - $cartItem->iqty;
 
-            $cartItem->item->save();
+                $cartItem->item->save();
+            }
+
+            CurrentOrder::truncate();
         }
-
+        else {
+            return "empty";
+        }
         
-
-        CurrentOrder::truncate();
     }
 
 }

@@ -122,10 +122,30 @@
 						</div>
 					</div>
 				</div>
+            </div>
+
+            <div class="modal fade" id="submitResponsemodal" tabindex="-1" role="dialog" aria-labelledby="submitResponsemodalLabel" style="display: none;" aria-hidden="true">
+				<div class="modal-dialog modal-sm" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="submitResponsemodalLabel">SUCCESS</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">×</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p id="submitResponse">
+								Order Sucessfully Placed!
+							</p>
+                        </div>
+                        <div class="modal-footer">
+							
+						</div>
+					</div>
+				</div>
 			</div>
 			
-			<div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true"
-			 >
+			<div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true">
 				<div class="modal-dialog modal-dialog-centered modal-lg" role="document" >
 					<div class="modal-content text-center" >
 						<div class="card-header">
@@ -141,7 +161,8 @@
 						
 						<div class="card-footer">
 							<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-							<button id="submit" value="submit" type="submit"  class="btn btn-primary" data-dismiss="modal">Confirm</button>
+                            <button id="submit" value="submit" type="submit"  class="btn btn-primary" data-dismiss="modal">Confirm</button>
+                            <button id="submitResponseButton" style="display: none;" data-toggle="modal" data-target="#submitResponsemodal"></button>
 						</div>
 					</div>
 				</div>
@@ -247,7 +268,7 @@ $(function() {
         event.preventDefault();
         $.ajax({
             url: '{{ Route('order.clear') }}',
-            type: 'delete',
+            type: 'delete'
         });
         $("#orderListTableContainer").load('{{ Route('orderDisplay') }}');
         $("#orderDetailsBlock").load('{{ Route('orderDisplay.list') }}');
@@ -260,6 +281,18 @@ $(function() {
 		$.ajax({
             url: '{{ Route('order.order') }}',
             type: 'post',
+            success: function(response){                
+                if(response == "empty") {
+                    $("#submitResponsemodalLabel").html("FAILED");
+                    $("#submitResponse").html("Order List is Empty!");
+                }
+                else {
+                    $("#submitResponsemodalLabel").html("SUCCESS");
+                    $("#submitResponse").html("Order Sucessfully Placed!");
+                }
+
+                $("#submitResponseButton").click();
+            }
         });
 		$("#orderListTableContainer").load('{{ Route('orderDisplay') }}');
 		$("#orderDetailsBlock").load('{{ Route('orderDisplay.list') }}');
