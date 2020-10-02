@@ -91,7 +91,7 @@
                             </div>
 						
 						<div>
-                                <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#largeModal">
+                                <button id="orderDetailsButton" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#largeModal">
                                     <i class="fa fa-dot-circle-o"></i> Submit
                                 </button>
                                 <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#smallmodal">
@@ -215,6 +215,18 @@ $(function() {
 	
 	});
 });
+
+//Update order details table only when displayed
+//Small amount of loading before order details correctly appears
+/*
+$(function() {
+	$("#orderDetailsButton").on("click", function(event) {
+        event.preventDefault();
+
+        $("#orderDetailsBlock").load('{{ Route('orderDisplay.list') }}');
+	});
+});
+*/
 
 $(function() {
     $("#orderListTableContainer").on("click", ".deleteCartItem", function() {
