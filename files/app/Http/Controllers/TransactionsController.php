@@ -35,6 +35,8 @@ class TransactionsController extends Controller
 
         $order = Order::where('oid', $id)->firstOrFail();
 
+        error_log( Order::where('oid', $id)->first()->items->toSql());
+
         return view('transactions.transactionsDetails', [
             'order' => $order
         ]);
